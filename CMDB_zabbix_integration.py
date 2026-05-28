@@ -68,7 +68,7 @@ USER_ATTR_MAP = {
 }
 
 # Фильтры логики
-INTERNAL_IP_PREFIXES = ['172.17', '172.18', '172.20']
+INTERNAL_IP_PREFIXES = ['192.x', '192.x', '192.x'] # заменить на свои
 PROD_KEYWORDS = ['CPRD']
 LINUX_OS_LIST = ['CentOs7(64-bit)', 'SUSEopenSUSE(64-bit)', 'CentOs 7 (64-bit)', 'Linux', 'Ubuntu', 'RedHat']
 SKIP_HOSTS = ["cprd-agp-lb01"] # Хосты, которые нужно пропустить
@@ -598,8 +598,8 @@ def main():
             new_dns = ''
             arr_ip = data['ip'].replace(" ", '').split(';')
             
-            # Logic to select primary IP (prefer non-172.1 if possible, or first)
-            candidate_ips = [ip for ip in arr_ip if '172.1' not in ip]
+            # Logic to select primary IP (prefer non-192.1 if possible, or first)
+            candidate_ips = [ip for ip in arr_ip if '192.1' not in ip] # Заменить на свои IP
             if not candidate_ips: candidate_ips = arr_ip
             new_ip = candidate_ips[0] if candidate_ips else arr_ip[0]
             
